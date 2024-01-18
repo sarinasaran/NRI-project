@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <h1>Nice to meet you, {{ name }}!</h1>
+    </head>
+    <body>
+        <h2>Let's get started.</h2>
+        <h3>Emma is going camping with friends! Emma's friends are planning on swimming in the 
+            lake while they are there but Emma isn't waterproof. Emma decides to buy some 
+            waterproof paint so Emma can also go swimming. Help Emma figure out how much 
+            paint Emma needs:</h3>
+            <table border = "1">
+                <tr>
+                    <th>Step</th>
+                    <th>Body Part</th>
+                    <th>Surface Area (in)</th>
+                    <th>Paint Volume (fl oz)</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>Legs</td>
+                    <td>6</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Arms</td>
+                    <td>3</td>
+                    <td>?</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Body</td>
+                    <td>?</td>
+                    <td>3</td>
+                </tr>
+            </table>
+        <br>
+        <h3>The first step is to calculate how much paint Emma needs to cover Emma's arms.</h3>
+        <label for="step1">So, what should I do first?</label>
+        <select name="step1" id="step1">
+            <option value="Select one" selected>-SELECT ONE-</option>
+            <option value="Create a ratio">We should create a ratio</option>
+            <option value="Create a proportion">We should create a proportion</option>
+            <option value="Multiply numbers">We should multiply numbers</option>
+            <option value="Divide numbers">We should divide numbers</option>
+         </select> 
+         <br>
+         <div id="displayText"></div>
+         <script>
+            // Get references to the select element and the display element
+            const dropdown = document.getElementById("step1");
+            const displayText = document.getElementById("displayText");
+    
+            // Add an event listener to the select element
+            dropdown.addEventListener("change", function () {
+                // Get the selected option's value
+                const selectedOption = dropdown.value;
+    
+                // Display text based on the selected option
+                switch (selectedOption) {
+                    case "Create a ratio":
+                        displayText.textContent = "Sure. Let's create a ratio.";
+                        break;
+                    case "Create a proportion":
+                        displayText.textContent = "For this problem, a ratio might be more appropriate.";
+                        break;
+                    case "Multiply numbers":
+                        displayText.textContent = "We're not quite ready to multiply numbers. Try again.";
+                        break;
+                    case "Divide numbers":
+                        displayText.textContent = "We're not quite ready to divide numbers. Try again.";
+                        break;
+                    default:
+                        displayText.textContent = "";
+                }
+            });
+        </script>
+        <br>
+        <form>
+            <p>Which <b>four</b> values should we use to set up our ratio?</p>
+    
+            <label>
+                <input type="checkbox" name="option1" id="option1"> Surface Area of Legs
+            </label><br>
+    
+            <label>
+                <input type="checkbox" name="option2" id="option2"> Surface Area of Arms
+            </label><br>
+    
+            <label>
+                <input type="checkbox" name="option3" id="option3"> Surface Area of Body
+            </label><br>
+    
+            <label>
+                <input type="checkbox" name="option4" id="option4"> Paint Volume for Legs
+            </label><br>
+    
+            <label>
+                <input type="checkbox" name="option5" id="option5"> Paint Volume for Arms
+            </label><br>
+    
+            <label>
+                <input type="checkbox" name="option6" id="option6"> Paint Volume for Body
+            </label><br>
+    
+            <div id="displayText2"></div>
+        </form>
+    
+        <script>
+            // Get references to the checkboxes and the display element
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const displayText2 = document.getElementById("displayText2");
+    
+            // Add event listeners to all checkboxes
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener("change", updateDisplay);
+            });
+    
+            // Function to update the display based on selected options
+            function updateDisplay() {
+                let text = "You selected: ";
+    
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        text +=  ' | ' + checkbox.nextSibling.nodeValue.trim();
+                    }
+                });
+    
+                displayText2.textContent = text.trim() || "No options selected.";
+            }
+        </script>
+        <br>
+        <p>Great! Now we can set up a ratio using these values. I think it should look like this: </p>
+        <sup>Paint Volume for Legs</sup>/<sub>Surface Area of Legs</sub> = <sup>Paint Volume for Arms</sup>/<sub>Surface Area of Arms</sub>
+
+        <form>
+            <p>Which values do we already have?</p>
+    
+            <label>
+                <input type="checkbox" name="option1" id="option1"> Surface Area of Legs
+            </label><br>
+    
+            <label>
+                <input type="checkbox" name="option2" id="option2"> Surface Area of Arms
+            </label><br>
+    
+            <label>
+                <input type="checkbox" name="option4" id="option4"> Paint Volume for Legs
+            </label><br>
+    
+            <label>
+                <input type="checkbox" name="option5" id="option5"> Paint Volume for Arms
+            </label><br>
+    
+            <div id="displayText3"></div>
+        </form>
+    
+        <script>
+            // Get references to the checkboxes and the display element
+            const checkboxes2 = document.querySelectorAll('input[type="checkbox"]');
+            const displayText3 = document.getElementById("displayText3");
+    
+            // Add event listeners to all checkboxes
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener("change", updateDisplay);
+            });
+    
+            // Function to update the display based on selected options
+            function updateDisplay() {
+                let text = "You selected: ";
+    
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        text +=  ' | ' + checkbox.nextSibling.nodeValue.trim();
+                    }
+                });
+    
+                displayText3.textContent = text.trim() || "No options selected.";
+            }
+        </script>
+        <br>
+
+        <p>Right! Let's fill in those values in our ratio.</p>
+        <sup>2</sup>/<sub>6</sub> = <sup>?</sup>/<sub>3</sub>
+        <p>How can we solve for '?' or the Paint Volume for Arms?</p>
+        
+
+    </body>
+</html>
